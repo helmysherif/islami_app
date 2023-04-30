@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       routes: {
         HomeScreen.routeName: (_) => const HomeScreen(),
         SplashScreen.routeName: (_) => const SplashScreen(),
-        SuraDetails.routeName: (_) => const SuraDetails()
+        SuraDetails.routeName: (_) => SuraDetails()
       },
     );
   }

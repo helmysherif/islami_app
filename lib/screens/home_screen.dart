@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Image.asset("assets/images/bg3.png", fit: BoxFit.fill)),
       Scaffold(
           appBar: AppBar(
-            title: Text("Islami", style: Theme.of(context).textTheme.bodyLarge),
+            title: Text("إسلامي", style: Theme.of(context).textTheme.bodyLarge),
           ),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: index,
