@@ -9,9 +9,14 @@ class RadioTab extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset("assets/images/radio_icon.png"),
-        const Text("إذاعة القرآن الكريم",
-            style: TextStyle(color: Colors.black)),
-        SizedBox(height: 30),
+        Text("إذاعة القرآن الكريم",
+            style: TextStyle(
+              color:
+                  Theme.of(context).colorScheme.brightness == Brightness.light
+                      ? Colors.black
+                      : const Color(0xffFACC1D),
+            )),
+        const SizedBox(height: 30),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -21,11 +26,12 @@ class RadioTab extends StatelessWidget {
                 elevation: MaterialStateProperty.all(0),
               ),
               onPressed: () {},
-              child: Icon(
-                Icons.skip_previous,
-                size: 55,
-                color: Theme.of(context).primaryColor,
-              ),
+              child: Icon(Icons.skip_previous,
+                  size: 55,
+                  color: Theme.of(context).colorScheme.brightness ==
+                          Brightness.light
+                      ? Theme.of(context).primaryColor
+                      : Colors.white),
             ),
             ElevatedButton(
               style: ButtonStyle(
@@ -34,10 +40,12 @@ class RadioTab extends StatelessWidget {
               ),
               onPressed: () {},
               child: Icon(
-                Icons.play_arrow_rounded,
-                size: 65,
-                color: Theme.of(context).primaryColor,
-              ),
+                  Icons.play_arrow_rounded,
+                  size: 65,
+                  color: Theme.of(context).colorScheme.brightness ==
+                          Brightness.light
+                      ? Theme.of(context).primaryColor
+                      : Colors.white),
             ),
             ElevatedButton(
               style: ButtonStyle(
@@ -46,10 +54,12 @@ class RadioTab extends StatelessWidget {
               ),
               onPressed: () {},
               child: Icon(
-                Icons.skip_next,
-                size: 55,
-                color: Theme.of(context).primaryColor,
-              ),
+                  Icons.skip_next,
+                  size: 55,
+                  color: Theme.of(context).colorScheme.brightness ==
+                          Brightness.light
+                      ? Theme.of(context).primaryColor
+                      : Colors.white),
             ),
           ],
         )

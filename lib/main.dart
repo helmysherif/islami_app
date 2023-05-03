@@ -20,12 +20,12 @@ class MyApp extends StatelessWidget {
       initialRoute: SplashScreen.routeName,
       theme: MyThemeData.lightTheme,
       darkTheme: MyThemeData.darkTheme,
-      // themeMode: ThemeMode.light,
+      themeMode: ThemeMode.light,
       routes: {
         HomeScreen.routeName: (_) => const HomeScreen(),
         SplashScreen.routeName: (_) => const SplashScreen(),
-        SuraDetails.routeName: (_) => SuraDetails(),
-        HadethDetails.routeName: (_) => HadethDetails()
+        SuraDetails.routeName: (_) => const SuraDetails(),
+        HadethDetails.routeName: (_) => const HadethDetails()
       },
     );
   }

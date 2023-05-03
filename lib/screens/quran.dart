@@ -244,7 +244,9 @@ class QuranTab extends StatelessWidget {
       children: [
         Image.asset("assets/images/quranbg.png"),
         Divider(
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).colorScheme.brightness == Brightness.light
+              ? Theme.of(context).primaryColor
+              : const Color(0xffFACC1D),
           thickness: 3,
           height: 0,
         ),
@@ -254,14 +256,19 @@ class QuranTab extends StatelessWidget {
             Text("عدد الايات", style: Theme.of(context).textTheme.bodyMedium),
             Container(
               width: 3,
-              color: Theme.of(context).primaryColor,
+              color:
+                  Theme.of(context).colorScheme.brightness == Brightness.light
+                      ? Theme.of(context).primaryColor
+                      : const Color(0xffFACC1D),
               height: 55,
             ),
             Text("اسم السورة", style: Theme.of(context).textTheme.bodyMedium)
           ],
         ),
         Divider(
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).colorScheme.brightness == Brightness.light
+              ? Theme.of(context).primaryColor
+              : const Color(0xffFACC1D),
           thickness: 3,
           height: 0,
         ),
@@ -271,7 +278,10 @@ class QuranTab extends StatelessWidget {
               Expanded(
                 child: ListView.separated(
                   separatorBuilder: (context, index) => Divider(
-                    color: Theme.of(context).primaryColor,
+                    color: Theme.of(context).colorScheme.brightness ==
+                            Brightness.light
+                        ? Theme.of(context).primaryColor
+                        : const Color(0xffFACC1D),
                     thickness: 2,
                     height: 0,
                   ),
@@ -290,14 +300,17 @@ class QuranTab extends StatelessWidget {
                               child: Text("${suraNumbers[index]}",
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodySmall!
-                                      .copyWith(color: Colors.black)),
+                                      .bodyMedium!
+                                      .copyWith(fontSize: 18)),
                             ),
                           ),
                           Container(
                             margin: const EdgeInsets.only(right: 21),
                             width: 3,
-                            color: Theme.of(context).primaryColor,
+                            color: Theme.of(context).colorScheme.brightness ==
+                                    Brightness.light
+                                ? Theme.of(context).primaryColor
+                                : const Color(0xffFACC1D),
                             height: 45,
                           ),
                           Expanded(
@@ -305,8 +318,8 @@ class QuranTab extends StatelessWidget {
                               child: Text(suraNames[index],
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodySmall!
-                                      .copyWith(color: Colors.black)),
+                                      .bodyMedium!
+                                      .copyWith(fontSize: 18)),
                             ),
                           ),
                         ],

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:islamic_app/widgets/sura_details_arg.dart';
 
 class SuraDetails extends StatefulWidget {
@@ -22,38 +21,47 @@ class _SuraDetailsState extends State<SuraDetails> {
       loadFile(args.suraIndex);
     }
     return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage("assets/images/bg3.png"), fit: BoxFit.fill),
-      ),
-      child: Scaffold(
-        appBar: AppBar(
-          title:
-              Text(args.suraName, style: Theme.of(context).textTheme.bodyLarge),
-        ),
-        body: verses.isEmpty
-            ? Center(
-                child: CircularProgressIndicator(
-                color: Theme.of(context).primaryColor,
-              ))
-            : ListView.separated(
-                separatorBuilder: (context, index) => Divider(
-                    thickness: 1,
-                    endIndent: 40,
-                    indent: 40,
-                    color: Theme.of(context).primaryColor),
-                itemBuilder: (context, index) => Center(
-                  child: Text(
-                    verses[index],
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.elMessiri(
-                        fontSize: 22, color: const Color(0xff242424)),
-                  ),
-                ),
-                itemCount: verses.length,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(
+                Theme.of(context).colorScheme.brightness == Brightness.light
+                    ? "assets/images/bg3.png"
+                    : "assets/images/dark_bg.png",
               ),
-      ),
-    );
+              fit: BoxFit.fill),
+        ),
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(args.suraName,
+                style: Theme.of(context).textTheme.bodyLarge),
+          ),
+          body: verses.isEmpty
+              ? Center(
+                  child: CircularProgressIndicator(
+                  color: Theme.of(context).primaryColor,
+                ))
+              : ListView.separated(
+                  separatorBuilder: (context, index) => Divider(
+                      thickness: 1,
+                      endIndent: 40,
+                      indent: 40,
+                      color: Theme.of(context).colorScheme.brightness ==
+                              Brightness.light
+                          ? Theme.of(context).primaryColor
+                          : const Color(0xffFACC1D)),
+                  itemBuilder: (context, index) => Center(
+                    child: Text(
+                      verses[index],
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium
+                          ?.copyWith(fontSize: 20),
+                    ),
+                  ),
+                  itemCount: verses.length,
+                ),
+        ));
   }
 
   Future<void> loadFile(int index) async {
