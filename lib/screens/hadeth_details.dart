@@ -10,9 +10,14 @@ class HadethDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as HadethModel;
     return Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/bg3.png"), fit: BoxFit.fill),
+              image: AssetImage(
+                Theme.of(context).colorScheme.brightness == Brightness.light
+                    ? "assets/images/bg3.png"
+                    : "assets/images/dark_bg.png",
+              ),
+              fit: BoxFit.fill),
         ),
         child: Scaffold(
             appBar: AppBar(

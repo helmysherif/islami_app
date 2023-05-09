@@ -24,17 +24,27 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.only(bottom: 20),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/images/bg2.png"), fit: BoxFit.cover)),
+                image: AssetImage(
+                    Theme.of(context).colorScheme.brightness == Brightness.light
+                        ? "assets/images/bg2.png"
+                        : "assets/images/splash_dark.png"),
+                fit: BoxFit.cover)),
         child: Column(
           children: [
             Expanded(
               child: Center(
-                child: Image.asset("assets/images/logo2.png"),
+                child: Image.asset(
+                    Theme.of(context).colorScheme.brightness == Brightness.light
+                        ? "assets/images/logo2.png"
+                        : "assets/images/logo_dark.png"),
               ),
             ),
-            Image.asset("assets/images/Group 7.png"),
+            Image.asset(
+                Theme.of(context).colorScheme.brightness == Brightness.light
+                    ? "assets/images/Group 7.png"
+                    : "assets/images/text_dark.png"),
           ],
         ),
       ),
