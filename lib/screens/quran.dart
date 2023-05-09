@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islamic_app/providers/my_provider.dart';
 import 'package:islamic_app/screens/sura_details.dart';
 import 'package:islamic_app/widgets/sura_details_arg.dart';
+import 'package:provider/provider.dart';
 
 class QuranTab extends StatelessWidget {
   QuranTab({Key? key}) : super(key: key);
@@ -239,29 +242,39 @@ class QuranTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Image.asset("assets/images/quranbg.png"),
         Divider(
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).colorScheme.brightness == Brightness.light
+              ? Theme.of(context).primaryColor
+              : const Color(0xffFACC1D),
           thickness: 3,
           height: 0,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text("عدد الايات", style: Theme.of(context).textTheme.bodyMedium),
+            Text(AppLocalizations.of(context)!.ayaNumbers,
+                style: Theme.of(context).textTheme.bodyMedium),
             Container(
               width: 3,
-              color: Theme.of(context).primaryColor,
+              color:
+                  Theme.of(context).colorScheme.brightness == Brightness.light
+                      ? Theme.of(context).primaryColor
+                      : const Color(0xffFACC1D),
               height: 55,
             ),
-            Text("اسم السورة", style: Theme.of(context).textTheme.bodyMedium)
+            Text(AppLocalizations.of(context)!.suraNames,
+                style: Theme.of(context).textTheme.bodyMedium)
           ],
         ),
         Divider(
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).colorScheme.brightness == Brightness.light
+              ? Theme.of(context).primaryColor
+              : const Color(0xffFACC1D),
           thickness: 3,
           height: 0,
         ),
@@ -271,7 +284,10 @@ class QuranTab extends StatelessWidget {
               Expanded(
                 child: ListView.separated(
                   separatorBuilder: (context, index) => Divider(
-                    color: Theme.of(context).primaryColor,
+                    color: Theme.of(context).colorScheme.brightness ==
+                        Brightness.light
+                        ? Theme.of(context).primaryColor
+                        : const Color(0xffFACC1D),
                     thickness: 2,
                     height: 0,
                   ),
@@ -283,34 +299,39 @@ class QuranTab extends StatelessWidget {
                       },
                       child: Center(
                           child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Expanded(
-                            child: Center(
-                              child: Text("${suraNumbers[index]}",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall!
-                                      .copyWith(color: Colors.black)),
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(right: 8),
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Expanded(
+                                child: Center(
+                                  child: Text("${suraNumbers[index]}",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(fontSize: 18)),
+                                ),
+                              ),
+                              Container(
+                            margin: provider.language == 'en'
+                                ? const EdgeInsets.only(left: 2)
+                                : const EdgeInsets.only(left: 21),
                             width: 3,
-                            color: Theme.of(context).primaryColor,
+                            color: Theme.of(context).colorScheme.brightness ==
+                                    Brightness.light
+                                ? Theme.of(context).primaryColor
+                                : const Color(0xffFACC1D),
                             height: 45,
                           ),
-                          Expanded(
-                            child: Center(
-                              child: Text(suraNames[index],
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall!
-                                      .copyWith(color: Colors.black)),
-                            ),
-                          ),
-                        ],
-                      )),
+                              Expanded(
+                                child: Center(
+                                  child: Text(suraNames[index],
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(fontSize: 18)),
+                                ),
+                              ),
+                            ],
+                          )),
                     );
                   },
                   itemCount: suraNames.length,
